@@ -16,11 +16,11 @@ function Navbar() {
     <>
       <div className="bg-blue-900 h-24">
         <div className="flex flex-row justify-center items-center h-full">
-          <div className="w-4/5 flex flex-row justify-between items-center">
+          <div className="w-8/12 flex flex-row justify-between items-center">
             <div className="flex flex-row items-center">
               <img src="gic3.png" className="min-w-16 w-16 "></img>
               <button
-                className={`font-semibold text-white border border-blue-900 hover:border-white hover:border-white/20 rounded-full opacity-70 hover:opacity-100 transition-opacity duration-200 text-xl p-2 mx-4 hidden sm:block ${
+                className={` text-white border border-blue-900 hover:border-white hover:border-white/20 rounded-full opacity-70 hover:opacity-100 transition-opacity duration-200 text-xl p-2 px-4 mx-2 hidden sm:block ${
                   activeTab == "Home" ? "bg-white/20 p-3" : ""
                 }`}
                 onClick={() => handleTabChange("Home")}
@@ -28,7 +28,7 @@ function Navbar() {
                 Home
               </button>
               <button
-                className={`font-semibold text-white border border-blue-900 hover:border-white hover:border-white/20 rounded-full opacity-70 hover:opacity-100 transition-opacity duration-200 text-xl p-2 mx-4 hidden sm:block ${
+                className={`font-semibold text-white border border-blue-900 hover:border-white hover:border-white/20 rounded-full opacity-70 hover:opacity-100 transition-opacity duration-200 text-xl p-2 px-4 mx-2 hidden sm:block ${
                   activeTab == "Transfer" ? "bg-white/20 p-3" : ""
                 }`}
                 onClick={() => handleTabChange("Transfer")}
@@ -36,7 +36,7 @@ function Navbar() {
                 Transfer
               </button>
               <button
-                className={`font-semibold text-white border border-blue-900 hover:border-white hover:border-white/20 rounded-full opacity-70 hover:opacity-100 transition-opacity duration-200 text-xl p-2 mx-4 hidden sm:block ${
+                className={`font-semibold text-white border border-blue-900 hover:border-white hover:border-white/20 rounded-full opacity-70 hover:opacity-100 transition-opacity duration-200 text-xl p-2 px-4 mx-2 hidden sm:block ${
                   activeTab == "Statement" ? "bg-white/20 p-3" : ""
                 }`}
                 onClick={() => handleTabChange("Statement")}
@@ -45,8 +45,8 @@ function Navbar() {
               </button>
             </div>
             <div className="flex flex-row justify-center items-center">
-              <i className="text-gray-300 fa-solid fa-gear fa-lg text-3xl px-2 mx-4 text-opacity-70 hover:text-opacity-100 hover:cursor-pointer hover:text-white-400 "></i>
-              <p className="font-semibold text-gray-300 text-l px-2 mx-4 hover:cursor-pointer text-opacity-70 hover:text-opacity-100">
+              <i className="text-gray-300 fa-solid fa-gear fa-lg text-3xl px-2 mx-2 text-opacity-70 hover:text-opacity-100 hover:cursor-pointer hover:text-white-400 "></i>
+              <p className="font-semibold text-gray-300 text-l px-2 mx-2 hover:cursor-pointer text-opacity-70 hover:text-opacity-100">
                 LOG OUT
               </p>
             </div>
