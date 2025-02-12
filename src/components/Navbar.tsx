@@ -44,9 +44,11 @@ function Navbar() {
                 Statement
               </button>
             </div>
-            <div className="flex flex-row justify-center items-center">
-              <i className="text-gray-300 fa-solid fa-gear fa-lg text-3xl px-2 mx-2 text-opacity-70 hover:text-opacity-100 hover:cursor-pointer hover:text-white-400 "></i>
-              <p className="font-semibold text-gray-300 text-l px-2 mx-2 hover:cursor-pointer text-opacity-70 hover:text-opacity-100">
+            <div className="flex sm:flex-col md:flex-row justify-center items-center ">
+              <div className="">
+                <i className="text-gray-300 fa-solid fa-gear fa-lg text-3xl px-2 mx-2 text-opacity-70 hover:text-opacity-100 hover:cursor-pointer hover:text-white-400 hidden sm:block"></i>
+              </div>
+              <p className="text-center font-semibold text-gray-300 text-l min-w-24 px-2 hover:cursor-pointer text-opacity-70 hover:text-opacity-100">
                 LOG OUT
               </p>
             </div>
