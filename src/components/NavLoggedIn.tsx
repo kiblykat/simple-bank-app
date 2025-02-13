@@ -21,7 +21,11 @@ const NavLoggedIn = () => {
       <div className="flex flex-row justify-center items-center h-full">
         <div className="w-8/12 flex flex-row justify-between items-center">
           <div className="flex flex-row items-center">
-            <img src="gic3.png" className="min-w-16 w-16 "></img>
+            <img
+              onClick={() => navigate("/")}
+              src="gic3.png"
+              className="min-w-16 w-16 rounded-full cursor-pointer"
+            ></img>
             <button
               onClick={() => handleTabChange("Home")}
               className={`font-semibold text-white border border-blue-900 hover:border-white hover:border-white/20 rounded-full opacity-70 hover:opacity-100 transition-opacity duration-300 text-xl p-2 px-4 mx-2 hidden sm:block ${

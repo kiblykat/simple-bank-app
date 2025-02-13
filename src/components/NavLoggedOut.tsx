@@ -1,16 +1,27 @@
 import { useContext } from "react";
 import GlobalContext from "../GlobalContext";
+import { useNavigate } from "react-router-dom";
 
 const NavLoggedOut = () => {
   const globalContext = useContext(GlobalContext);
   const { setIsLoggedIn } = globalContext;
+  const navigate = useNavigate();
+
+  function handleLogIn(): void {
+    setIsLoggedIn(true);
+    navigate("/home");
+  }
 
   return (
     <>
       <div className="flex flex-row justify-center items-center h-full">
         <div className="w-8/12 flex flex-row justify-between items-center">
           <div className="flex flex-row items-center">
-            <img src="gic3.png" className="min-w-16 w-16 "></img>
+            <img
+              onClick={() => navigate("/")}
+              src="gic3.png"
+              className="min-w-16 w-16 rounded-full cursor-pointer"
+            ></img>
             <button className="hidden font-semibold text-white border border-blue-900 hover:border-white hover:border-white/20 rounded-full opacity-70 hover:opacity-100 transition-opacity duration-300 text-xl p-2 px-4 mx-2">
               Home
             </button>
@@ -26,7 +37,7 @@ const NavLoggedOut = () => {
               <i className="text-gray-300 fa-solid fa-gear fa-lg text-3xl px-2 mx-2 text-opacity-70 hover:text-opacity-100 hover:cursor-pointer hover:text-white-400 hidden sm:block"></i>
             </div>
             <p
-              onClick={() => setIsLoggedIn(true)}
+              onClick={() => handleLogIn()}
               className="text-center font-semibold text-gray-300 text-l min-w-24 px-2 hover:cursor-pointer text-opacity-70 hover:text-opacity-100"
             >
               LOG IN
