@@ -1,13 +1,10 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import GlobalContext from "../GlobalContext";
 
 const NavLoggedIn = () => {
-  const globalContext = useContext(GlobalContext);
+  const { setIsLoggedIn, activeTab, setActiveTab } = useContext(GlobalContext);
   const navigate = useNavigate();
-  const [activeTab, setActiveTab] = useState<
-    "Landing" | "Home" | "Transfer" | "Statement"
-  >("Landing");
 
   function handleTabChange(tab: "Landing" | "Home" | "Transfer" | "Statement") {
     setActiveTab(tab);
@@ -17,8 +14,6 @@ const NavLoggedIn = () => {
       navigate("/");
     }
   }
-
-  const { setIsLoggedIn } = globalContext;
 
   return (
     <>

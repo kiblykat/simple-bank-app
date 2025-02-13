@@ -4,11 +4,12 @@ import GlobalContext from "../GlobalContext";
 import { useNavigate } from "react-router-dom";
 
 const Landing = () => {
-  const { setIsLoggedIn } = useContext(GlobalContext);
+  const { setIsLoggedIn, setActiveTab } = useContext(GlobalContext);
   const navigate = useNavigate();
 
   function handleLogIn() {
     setIsLoggedIn(true);
+    setActiveTab("Home");
     navigate("/home");
   }
 

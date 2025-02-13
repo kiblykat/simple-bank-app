@@ -4,11 +4,12 @@ import { useNavigate } from "react-router-dom";
 
 const NavLoggedOut = () => {
   const globalContext = useContext(GlobalContext);
-  const { setIsLoggedIn } = globalContext;
+  const { setIsLoggedIn, setActiveTab } = globalContext;
   const navigate = useNavigate();
 
   function handleLogIn(): void {
     setIsLoggedIn(true);
+    setActiveTab("Home");
     navigate("/home");
   }
 
