@@ -38,7 +38,7 @@ const NavLoggedOut = () => {
             </div>
             <p
               onClick={() => handleLogIn()}
-              className="text-center font-semibold text-gray-300 text-l min-w-24 px-2 hover:cursor-pointer text-opacity-70 hover:text-opacity-100"
+              className="text-center font-semibold text-gray-300 text-l min-w-24 px-2 hover:cursor-pointer text-opacity-100 hover:text-opacity-100 border-2 py-4 transition-all hover:bg-white/20 rounded-full border-gray-300 hover:border-white"
             >
               LOG IN
             </p>
