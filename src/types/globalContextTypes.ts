@@ -3,13 +3,17 @@ export interface GlobalContextType {
   setIsLoggedIn: (bool: boolean) => void;
   activeTab: string;
   setActiveTab: (tab: "Landing" | "Home" | "Transfer" | "Statement") => void;
+  menuOpen: boolean;
+  setMenuOpen: (bool: boolean) => void;
 }
 
-export const initialState = {
+export const initialGlobalState = {
   isLoggedIn: false,
   setIsLoggedIn: () => {},
   activeTab: "Landing",
   setActiveTab: () => {},
+  menuOpen: false,
+  setMenuOpen: () => {},
 };
 
 export interface SlideInTextProps {

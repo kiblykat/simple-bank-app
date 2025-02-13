@@ -3,8 +3,13 @@ import { useNavigate } from "react-router-dom";
 import GlobalContext from "../GlobalContext";
 
 const NavLoggedIn = () => {
-  const { setIsLoggedIn, activeTab, setActiveTab } = useContext(GlobalContext);
+  const { setIsLoggedIn, activeTab, setActiveTab, menuOpen, setMenuOpen } =
+    useContext(GlobalContext);
   const navigate = useNavigate();
+
+  function handleMenuOpen(bool: boolean) {
+    setMenuOpen(bool);
+  }
 
   function handleTabChange(tab: "Landing" | "Home" | "Transfer" | "Statement") {
     setActiveTab(tab);
@@ -20,8 +25,15 @@ const NavLoggedIn = () => {
       <div className="flex flex-row justify-center items-center h-full">
         <div className="w-full md:w-8/12 flex flex-row justify-between items-center">
           <div className="flex flex-row items-center">
-            <button className="md:hidden text-white hover:bg-white/20 p-4 rounded-full">
-              <i className="fa-solid fa-bars"></i>
+            <button
+              onClick={() => handleMenuOpen(!menuOpen)}
+              className="md:hidden text-white hover:bg-white/20 p-4 w-16 rounded-full"
+            >
+              {!menuOpen ? (
+                <i className="fa-solid fa-bars"></i>
+              ) : (
+                <i className="fa-solid fa-xmark"></i>
+              )}
             </button>
             <img
               onClick={() => handleTabChange("Landing")}
