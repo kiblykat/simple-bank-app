@@ -7,3 +7,8 @@ export const initialState = {
   isLoggedIn: false,
   setIsLoggedIn: () => {},
 };
+
+export interface SlideInTextProps {
+  children: React.ReactNode;
+  delay?: number;
+}
