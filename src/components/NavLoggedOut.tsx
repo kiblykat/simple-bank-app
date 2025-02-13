@@ -1,5 +1,17 @@
+import { useContext } from "react";
+import GlobalContext from "../GlobalContext";
+
 const NavLoggedOut = () => {
-  return <div>NavLoggedOut</div>;
+  const globalContext = useContext(GlobalContext);
+  const { setIsLoggedIn } = globalContext;
+
+  return (
+    <div>
+      <button className="btn btn-primary" onClick={() => setIsLoggedIn(true)}>
+        log in
+      </button>
+    </div>
+  );
 };
 
 export default NavLoggedOut;

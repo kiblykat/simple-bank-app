@@ -1,12 +1,13 @@
-import { useState } from "react";
+import { useContext } from "react";
 import NavLoggedIn from "./NavLoggedIn";
 import NavLoggedOut from "./NavLoggedOut";
+import GlobalContext from "../GlobalContext";
 
 function Navbar() {
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const globalContext = useContext(GlobalContext);
   return (
     <div className="bg-blue-900 h-24">
-      {isLoggedIn ? <NavLoggedIn /> : <NavLoggedOut />}
+      {globalContext.isLoggedIn ? <NavLoggedIn /> : <NavLoggedOut />}
     </div>
   );
 }
