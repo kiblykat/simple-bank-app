@@ -3,8 +3,14 @@ import { useNavigate } from "react-router-dom";
 import GlobalContext from "../GlobalContext";
 
 const NavLoggedIn = () => {
-  const { setIsLoggedIn, activeTab, setActiveTab, isMenuOpen, setIsMenuOpen } =
-    useContext(GlobalContext);
+  const {
+    isLoggedIn,
+    setIsLoggedIn,
+    activeTab,
+    setActiveTab,
+    isMenuOpen,
+    setIsMenuOpen,
+  } = useContext(GlobalContext);
   const navigate = useNavigate();
 
   function handleMenuOpen(bool: boolean) {
@@ -28,7 +34,9 @@ const NavLoggedIn = () => {
             {/* Mobile Screen Burger */}
             <button
               onClick={() => handleMenuOpen(!isMenuOpen)}
-              className="md:hidden text-white hover:bg-white/20 p-4 w-14 m-2 rounded-full"
+              className={`md:hidden text-white hover:bg-white/20 p-4 w-14 m-2 rounded-full ${
+                !isLoggedIn ? "hidden" : null
+              }`}
             >
               {!isMenuOpen ? (
                 <i className="fa-solid fa-bars"></i>
