@@ -25,6 +25,7 @@ const NavLoggedIn = () => {
       <div className="flex flex-row justify-center items-center h-full">
         <div className="w-full md:w-8/12 flex flex-row justify-between items-center">
           <div className="flex flex-row items-center">
+            {/* Mobile Screen Burger */}
             <button
               onClick={() => handleMenuOpen(!menuOpen)}
               className="md:hidden text-white hover:bg-white/20 p-4 w-16 rounded-full"
@@ -35,6 +36,8 @@ const NavLoggedIn = () => {
                 <i className="fa-solid fa-xmark"></i>
               )}
             </button>
+            {/* End Mobile Screen Burger */}
+            {/* Right Tabs */}
             <img
               onClick={() => handleTabChange("Landing")}
               src="gic3.png"
@@ -65,6 +68,8 @@ const NavLoggedIn = () => {
               Statement
             </button>
           </div>
+          {/* End Left Tabs */}
+          {/* Right Tabs */}
           <div className="flex sm:flex-col md:flex-row justify-center items-center ">
             <div className="">
               <i
@@ -81,6 +86,7 @@ const NavLoggedIn = () => {
               LOG OUT
             </p>
           </div>
+          {/* End Right Tabs */}
         </div>
       </div>
     </>
