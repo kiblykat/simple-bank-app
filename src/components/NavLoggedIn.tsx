@@ -9,9 +9,13 @@ const NavLoggedIn = () => {
     "Landing" | "Home" | "Transfer" | "Statement"
   >("Landing");
 
-  function handleTabChange(tab: "Home" | "Transfer" | "Statement") {
+  function handleTabChange(tab: "Landing" | "Home" | "Transfer" | "Statement") {
     setActiveTab(tab);
-    navigate(`/${tab.toLowerCase()}`);
+    if (tab !== "Landing") {
+      navigate(`/${tab.toLowerCase()}`);
+    } else {
+      navigate("/");
+    }
   }
 
   const { setIsLoggedIn } = globalContext;
@@ -22,7 +26,7 @@ const NavLoggedIn = () => {
         <div className="w-8/12 flex flex-row justify-between items-center">
           <div className="flex flex-row items-center">
             <img
-              onClick={() => navigate("/")}
+              onClick={() => handleTabChange("Landing")}
               src="gic3.png"
               className="min-w-16 w-16 rounded-full cursor-pointer"
             ></img>
