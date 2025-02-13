@@ -6,11 +6,35 @@ const NavLoggedOut = () => {
   const { setIsLoggedIn } = globalContext;
 
   return (
-    <div>
-      <button className="btn btn-primary" onClick={() => setIsLoggedIn(true)}>
-        log in
-      </button>
-    </div>
+    <>
+      <div className="flex flex-row justify-center items-center h-full">
+        <div className="w-8/12 flex flex-row justify-between items-center">
+          <div className="flex flex-row items-center">
+            <img src="gic3.png" className="min-w-16 w-16 "></img>
+            <button className="hidden font-semibold text-white border border-blue-900 hover:border-white hover:border-white/20 rounded-full opacity-70 hover:opacity-100 transition-opacity duration-300 text-xl p-2 px-4 mx-2">
+              Home
+            </button>
+            <button className="hidden font-semibold text-white border border-blue-900 hover:border-white hover:border-white/20 rounded-full opacity-70 hover:opacity-100 transition-opacity duration-300 text-xl p-2 px-4 mx-2">
+              Transfer
+            </button>
+            <button className="hidden font-semibold text-white border border-blue-900 hover:border-white hover:border-white/20 rounded-full opacity-70 hover:opacity-100 transition-opacity duration-300 text-xl p-2 px-4 mx-2">
+              Statement
+            </button>
+          </div>
+          <div className="flex sm:flex-col md:flex-row justify-center items-center ">
+            <div className="">
+              <i className="text-gray-300 fa-solid fa-gear fa-lg text-3xl px-2 mx-2 text-opacity-70 hover:text-opacity-100 hover:cursor-pointer hover:text-white-400 hidden sm:block"></i>
+            </div>
+            <p
+              onClick={() => setIsLoggedIn(true)}
+              className="text-center font-semibold text-gray-300 text-l min-w-24 px-2 hover:cursor-pointer text-opacity-70 hover:text-opacity-100"
+            >
+              LOG IN
+            </p>
+          </div>
+        </div>
+      </div>
+    </>
   );
 };
 
