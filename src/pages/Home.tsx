@@ -1,7 +1,6 @@
 import { useContext, useEffect } from "react";
 import GlobalContext from "../GlobalContext";
 import { useNavigate } from "react-router-dom";
-import Sidebar from "../components/Sidebar";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -16,7 +15,6 @@ const Home = () => {
 
   return (
     <>
-      <Sidebar />
       <div className="bg-stone-100 h-screen">
         <div className="grid grid-cols-4">
           <div className="card bg-base-100 shadow-xl col-span-4 md:col-span-2 mx-12 md:ml-12 md:mr-4 mt-12 border border-gray-300">

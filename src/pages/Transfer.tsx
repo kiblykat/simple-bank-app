@@ -15,7 +15,7 @@ const Transfer = () => {
 
   return (
     <>
-      <div>"Statement"</div>
+      <div>"Transfer"</div>
     </>
   );
 };
