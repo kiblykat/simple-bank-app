@@ -28,7 +28,7 @@ const NavLoggedIn = () => {
             {/* Mobile Screen Burger */}
             <button
               onClick={() => handleMenuOpen(!isMenuOpen)}
-              className="md:hidden text-white hover:bg-white/20 p-4 w-16 rounded-full"
+              className="md:hidden text-white hover:bg-white/20 p-4 w-14 m-2 rounded-full"
             >
               {!isMenuOpen ? (
                 <i className="fa-solid fa-bars"></i>
