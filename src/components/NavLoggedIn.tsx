@@ -3,12 +3,12 @@ import { useNavigate } from "react-router-dom";
 import GlobalContext from "../GlobalContext";
 
 const NavLoggedIn = () => {
-  const { setIsLoggedIn, activeTab, setActiveTab, menuOpen, setMenuOpen } =
+  const { setIsLoggedIn, activeTab, setActiveTab, isMenuOpen, setIsMenuOpen } =
     useContext(GlobalContext);
   const navigate = useNavigate();
 
   function handleMenuOpen(bool: boolean) {
-    setMenuOpen(bool);
+    setIsMenuOpen(bool);
   }
 
   function handleTabChange(tab: "Landing" | "Home" | "Transfer" | "Statement") {
@@ -27,10 +27,10 @@ const NavLoggedIn = () => {
           <div className="flex flex-row items-center">
             {/* Mobile Screen Burger */}
             <button
-              onClick={() => handleMenuOpen(!menuOpen)}
+              onClick={() => handleMenuOpen(!isMenuOpen)}
               className="md:hidden text-white hover:bg-white/20 p-4 w-16 rounded-full"
             >
-              {!menuOpen ? (
+              {!isMenuOpen ? (
                 <i className="fa-solid fa-bars"></i>
               ) : (
                 <i className="fa-solid fa-xmark"></i>

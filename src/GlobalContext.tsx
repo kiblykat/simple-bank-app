@@ -8,7 +8,7 @@ import { ReactNode } from "react";
 const GlobalContext = createContext<GlobalContextType>(initialGlobalState);
 
 export const GlobalProvider = ({ children }: { children: ReactNode }) => {
-  const [menuOpen, setMenuOpen] = useState<boolean>(false);
+  const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(true);
   const [activeTab, setActiveTab] = useState<
     "Landing" | "Home" | "Transfer" | "Statement"
@@ -19,8 +19,8 @@ export const GlobalProvider = ({ children }: { children: ReactNode }) => {
     setIsLoggedIn,
     activeTab,
     setActiveTab,
-    menuOpen,
-    setMenuOpen,
+    isMenuOpen,
+    setIsMenuOpen,
   };
 
   return (

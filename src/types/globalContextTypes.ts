@@ -3,8 +3,8 @@ export interface GlobalContextType {
   setIsLoggedIn: (bool: boolean) => void;
   activeTab: string;
   setActiveTab: (tab: "Landing" | "Home" | "Transfer" | "Statement") => void;
-  menuOpen: boolean;
-  setMenuOpen: (bool: boolean) => void;
+  isMenuOpen: boolean;
+  setIsMenuOpen: (bool: boolean) => void;
 }
 
 export const initialGlobalState = {
@@ -12,8 +12,8 @@ export const initialGlobalState = {
   setIsLoggedIn: () => {},
   activeTab: "Landing",
   setActiveTab: () => {},
-  menuOpen: false,
-  setMenuOpen: () => {},
+  isMenuOpen: false,
+  setIsMenuOpen: () => {},
 };
 
 export interface SlideInTextProps {
