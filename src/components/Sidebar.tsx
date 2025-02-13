@@ -7,9 +7,9 @@ const Sidebar = () => {
   return (
     <>
       <div
-        className={`fixed top-24 left-0 h-full w-64 bg-blue-900 z-50 transform transition-transform duration-300 ease-in-out ${
+        className={`fixed top-24 left-0 h-screen w-64 bg-blue-900 z-50 transform transition-transform duration-300 ease-in-out ${
           isMenuOpen ? "translate-x-0" : "-translate-x-full"
-        } sm:hidden`}
+        } md:hidden`}
       >
         <div className="flex flex-col p-4 space-y-6">
           <div className="flex flex-col space-y-4">
