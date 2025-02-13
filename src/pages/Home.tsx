@@ -1,7 +1,7 @@
 const Home = () => {
   return (
     <>
-      <div className=" bg-stone-100 h-screen">
+      <div className=" bg-stone-100 h-full">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
           <div className="card bg-base-100 shadow-xl md:col-span-2 lg:col-span-4 mx-12 mt-12 border border-gray-300">
             <div className="card-body">
