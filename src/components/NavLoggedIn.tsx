@@ -5,9 +5,9 @@ import GlobalContext from "../GlobalContext";
 const NavLoggedIn = () => {
   const globalContext = useContext(GlobalContext);
   const navigate = useNavigate();
-  const [activeTab, setActiveTab] = useState<"Home" | "Transfer" | "Statement">(
-    "Home"
-  );
+  const [activeTab, setActiveTab] = useState<
+    "Landing" | "Home" | "Transfer" | "Statement"
+  >("Landing");
 
   function handleTabChange(tab: "Home" | "Transfer" | "Statement") {
     setActiveTab(tab);
@@ -53,7 +53,12 @@ const NavLoggedIn = () => {
           </div>
           <div className="flex sm:flex-col md:flex-row justify-center items-center ">
             <div className="">
-              <i className="text-gray-300 fa-solid fa-gear fa-lg text-3xl px-2 mx-2 text-opacity-70 hover:text-opacity-100 hover:cursor-pointer hover:text-white-400 hidden sm:block"></i>
+              <i
+                className="text-gray-300 fa-solid fa-gear fa-lg text-3xl px-2 mx-2 text-opacity-70 hover:text-opacity-100 hover:cursor-pointer hover:text-white-400 hidden sm:block hover:animate-spin-cw"
+                onMouseLeave={(e) =>
+                  (e.target as HTMLElement).classList.add("animate-spin-ccw")
+                }
+              ></i>
             </div>
             <p
               onClick={() => setIsLoggedIn(false)}
