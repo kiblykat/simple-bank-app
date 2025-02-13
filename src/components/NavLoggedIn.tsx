@@ -28,7 +28,7 @@ const NavLoggedIn = () => {
             ></img>
             <button
               onClick={() => handleTabChange("Home")}
-              className={`font-semibold text-white border border-blue-900 hover:border-white hover:border-white/20 rounded-full opacity-70 hover:opacity-100 transition-opacity duration-300 text-xl p-2 px-4 mx-2 hidden sm:block ${
+              className={`font-semibold text-white border border-blue-900 hover:border-white/20 rounded-full opacity-80 hover:opacity-100 transition-opacity duration-300 text-xl p-2 px-4 mx-2 hidden sm:block ${
                 activeTab == "Home" ? "bg-white/20 p-3" : ""
               }`}
             >
@@ -36,7 +36,7 @@ const NavLoggedIn = () => {
             </button>
             <button
               onClick={() => handleTabChange("Transfer")}
-              className={`font-semibold text-white border border-blue-900 hover:border-white hover:border-white/20 rounded-full opacity-70 hover:opacity-100 transition-opacity duration-300 text-xl p-2 px-4 mx-2 hidden sm:block ${
+              className={`font-semibold text-white border border-blue-900 hover:border-white/20 rounded-full opacity-80 hover:opacity-100 transition-opacity duration-300 text-xl p-2 px-4 mx-2 hidden sm:block ${
                 activeTab == "Transfer" ? "bg-white/20 p-3" : ""
               }`}
             >
@@ -44,7 +44,7 @@ const NavLoggedIn = () => {
             </button>
             <button
               onClick={() => handleTabChange("Statement")}
-              className={`font-semibold text-white border border-blue-900 hover:border-white hover:border-white/20 rounded-full opacity-70 hover:opacity-100 transition-opacity duration-300 text-xl p-2 px-4 mx-2 hidden sm:block ${
+              className={`font-semibold text-white border border-blue-900 hover:border-white/20 rounded-full opacity-80 hover:opacity-100 transition-opacity duration-300 text-xl p-2 px-4 mx-2 hidden sm:block ${
                 activeTab == "Statement" ? "bg-white/20 p-3" : ""
               }`}
             >
