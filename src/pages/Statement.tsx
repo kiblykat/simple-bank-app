@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import GlobalContext from "../GlobalContext";
 import { useNavigate } from "react-router-dom";
 
@@ -6,7 +6,18 @@ const Statement = () => {
   const navigate = useNavigate();
   const globalContext = useContext(GlobalContext);
   const { isLoggedIn } = globalContext;
-  return <>{isLoggedIn ? <div>"Statement"</div> : navigate("/")}</>;
+
+  useEffect(() => {
+    if (!isLoggedIn) {
+      navigate("/");
+    }
+  }, [isLoggedIn, navigate]);
+
+  return (
+    <>
+      <div>"Statement"</div>
+    </>
+  );
 };
 
 export default Statement;
