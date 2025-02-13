@@ -1,7 +1,9 @@
 import { useContext } from "react";
 import GlobalContext from "../GlobalContext";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
+  const navigate = useNavigate();
   const globalContext = useContext(GlobalContext);
   const { isLoggedIn } = globalContext;
   return (
@@ -30,7 +32,7 @@ const Home = () => {
           </div>
         </div>
       ) : (
-        "Please log in"
+        navigate("/")
       )}
     </>
   );
