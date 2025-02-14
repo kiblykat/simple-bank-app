@@ -5,13 +5,14 @@ import { useNavigate } from "react-router-dom";
 const Home = () => {
   const navigate = useNavigate();
   const globalContext = useContext(GlobalContext);
-  const { isLoggedIn } = globalContext;
+  const { isLoggedIn, setActiveTab } = globalContext;
 
   useEffect(() => {
     if (!isLoggedIn) {
       navigate("/");
     }
-  }, [isLoggedIn, navigate]);
+    setActiveTab("Home");
+  }, [isLoggedIn, navigate, setActiveTab]);
 
   return (
     <>
