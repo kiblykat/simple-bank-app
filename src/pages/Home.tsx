@@ -1,11 +1,12 @@
 import { useContext, useEffect } from "react";
 import GlobalContext from "../GlobalContext";
 import { useNavigate } from "react-router-dom";
+import { formatDate } from "../utils/utils";
 
 const Home = () => {
   const navigate = useNavigate();
   const globalContext = useContext(GlobalContext);
-  const { isLoggedIn, setActiveTab } = globalContext;
+  const { isLoggedIn, setActiveTab, balance } = globalContext;
 
   useEffect(() => {
     if (!isLoggedIn) {
@@ -23,7 +24,9 @@ const Home = () => {
               <div className="card-title">GIC Balance</div>
               <hr></hr>
               <div className="">
-                <h1 className=" text-6xl font-semibold">$60.00</h1>
+                <h1 className=" text-6xl font-semibold">
+                  ${balance.toFixed(2)}
+                </h1>
               </div>
             </div>
           </div>
@@ -31,8 +34,34 @@ const Home = () => {
             <div className="card-body">
               <div className="card-title">Recent Activity</div>
               <hr></hr>
-              <div className="">
-                <h1 className=" text-6xl font-semibold"></h1>
+              <div className="overflow-y-auto">
+                <table className="table w-full">
+                  <thead>
+                    <tr>
+                      <th>Date</th>
+                      <th>Amount</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {globalContext.transactions
+                      .slice(0, 3)
+                      .map((transaction, index) => (
+                        <tr key={index}>
+                          <td>{formatDate(transaction.date)}</td>
+                          <td
+                            className={
+                              transaction.amount > 0
+                                ? "text-success"
+                                : "text-error"
+                            }
+                          >
+                            {transaction.amount > 0 ? "+" : "-"}$
+                            {Math.abs(transaction.amount).toFixed(2)}
+                          </td>
+                        </tr>
+                      ))}
+                  </tbody>
+                </table>
               </div>
             </div>
           </div>

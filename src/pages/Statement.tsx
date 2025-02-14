@@ -1,22 +1,11 @@
 import { useContext, useEffect } from "react";
 import GlobalContext from "../GlobalContext";
 import { useNavigate } from "react-router-dom";
+import { formatDate } from "../utils/utils";
 
 const Statement = () => {
   const navigate = useNavigate();
   const { isLoggedIn, setActiveTab, transactions } = useContext(GlobalContext);
-
-  const formatDate = (date: Date) => {
-    return date.toLocaleString("en-US", {
-      day: "numeric",
-      month: "short",
-      year: "numeric",
-      hour: "2-digit",
-      minute: "2-digit",
-      second: "2-digit",
-      hour12: true,
-    });
-  };
 
   useEffect(() => {
     if (!isLoggedIn) {
