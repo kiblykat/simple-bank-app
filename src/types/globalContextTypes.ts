@@ -26,3 +26,5 @@ export interface Transaction {
   amount: number;
   balance: number;
 }
+
+export type Tabs = "Landing" | "Home" | "Transfer" | "Statement";

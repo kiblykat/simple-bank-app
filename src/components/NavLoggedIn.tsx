@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import GlobalContext from "../GlobalContext";
+import { Tabs } from "../types/globalContextTypes";
 
 const NavLoggedIn = () => {
   const {
@@ -17,7 +18,7 @@ const NavLoggedIn = () => {
     setIsMenuOpen(bool);
   }
 
-  function handleTabChange(tab: "Landing" | "Home" | "Transfer" | "Statement") {
+  function handleTabChange(tab: Tabs) {
     setActiveTab(tab);
     if (tab !== "Landing") {
       navigate(`/${tab.toLowerCase()}`);

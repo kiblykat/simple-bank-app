@@ -1,9 +1,21 @@
 import { useContext } from "react";
 import GlobalContext from "../GlobalContext";
+import { useNavigate } from "react-router-dom";
+import { Tabs } from "../types/globalContextTypes";
 
 const Sidebar = () => {
   const globalContext = useContext(GlobalContext);
-  const { isMenuOpen } = globalContext;
+  const { isMenuOpen, activeTab, setActiveTab } = globalContext;
+  const navigate = useNavigate();
+
+  function handleTabChange(tab: Tabs) {
+    setActiveTab(tab);
+    if (tab !== "Landing") {
+      navigate(`/${tab.toLowerCase()}`);
+    } else {
+      navigate("/");
+    }
+  }
   return (
     <>
       <div
@@ -13,10 +25,13 @@ const Sidebar = () => {
       >
         <div className="flex flex-col p-4 space-y-6">
           <div className="flex flex-col space-y-4">
-            {["Home", "Transfer", "Statement"].map((tab) => (
+            {(["Home", "Transfer", "Statement"] as const).map((tab) => (
               <button
+                onClick={() => handleTabChange(tab)}
                 key={tab}
-                className={`text-left font-semibold text-white px-4 py-3 rounded-lg hover:bg-white/20 transition-colors duration-200 `}
+                className={`text-left font-semibold text-white px-4 py-3 rounded-lg hover:bg-white/20 transition-colors duration-200 ${
+                  activeTab === tab ? "bg-white/20" : ""
+                }`}
               >
                 {tab}
               </button>
