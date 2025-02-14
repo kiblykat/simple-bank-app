@@ -1,6 +1,8 @@
 import { useNavigate } from "react-router-dom";
 
 const Tr_Withdraw = () => {
+  const handleWithdraw = (): void => {};
+
   const navigate = useNavigate();
   return (
     <div className="bg-stone-100 h-screen">
@@ -26,7 +28,10 @@ const Tr_Withdraw = () => {
               />
               <p className="text-center font-bold mx-2">SGD</p>
             </div>
-            <button className="btn rounded-full w-52 mb-16 bg-blue-900 text-white">
+            <button
+              onClick={() => handleWithdraw()}
+              className="btn rounded-full w-52 mb-16 bg-blue-900 text-white"
+            >
               Withdraw
             </button>
           </div>
