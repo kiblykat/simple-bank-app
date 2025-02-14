@@ -18,7 +18,7 @@ const Transfer = () => {
     <>
       <div className="bg-stone-100 h-screen">
         <div className="flex flex-row justify-center w-screen h-screen">
-          <div className="bg-white p-4 rounded-lg shadow-md col-start-2">
+          <div className="bg-white p-8 px-20 rounded-lg shadow-md">
             <div className="flex flex-col justify-center items-center">
               <h1 className="text-xl font-semibold ">Transfer Money</h1>
             </div>
