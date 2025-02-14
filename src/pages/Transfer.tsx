@@ -15,7 +15,7 @@ const Transfer = () => {
 
   return (
     <>
-      <div>"Transfer"</div>
+      <div className="bg-stone-100 h-screen"></div>
     </>
   );
 };

@@ -20,3 +20,9 @@ export interface SlideInTextProps {
   children: React.ReactNode;
   delay?: number;
 }
+
+export interface Transaction {
+  date: Date;
+  amount: number;
+  balance: number;
+}
