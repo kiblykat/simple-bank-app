@@ -24,7 +24,7 @@ const Transfer = () => {
             </div>
             <div className="mt-4 px-10 rounded-full">
               <p className="font-bold block text-sm text-gray-700 mb-3">
-                Funds In
+                Deposit
               </p>
               <div
                 onClick={() => navigate("/transfer/deposit")}
@@ -39,7 +39,7 @@ const Transfer = () => {
                 </div>
               </div>
               <p className="font-bold block text-sm text-gray-700 mb-3">
-                Funds Out
+                Withdraw
               </p>
               <div
                 onClick={() => navigate("/transfer/withdraw")}

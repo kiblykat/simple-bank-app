@@ -8,7 +8,7 @@ import { GlobalProvider } from "./GlobalContext.tsx";
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <GlobalProvider>
-      <Toaster position="top-center" reverseOrder={false} />
+      <Toaster position="bottom-right" reverseOrder={false} />
       <App />
     </GlobalProvider>
   </StrictMode>
