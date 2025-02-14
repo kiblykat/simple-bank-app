@@ -26,7 +26,7 @@ const Tr_Withdraw = () => {
       ...transactions,
       {
         date: new Date(),
-        amount: withdrawAmount,
+        amount: -withdrawAmount,
         balance: newBalance,
       },
     ]);
