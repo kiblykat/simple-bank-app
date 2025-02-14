@@ -41,7 +41,7 @@ const Tr_Deposit = () => {
           <div className="flex flex-row justify-between">
             <i
               onClick={() => navigate("/transfer")}
-              className="m-3 p-3 fa-solid fa-arrow-left text-xl rounded-full hover:bg-gray-100"
+              className="m-3 p-3 fa-solid fa-arrow-left text-xl rounded-full hover:bg-gray-100 hover:cursor-pointer"
             ></i>
             <img src="/gic3.png" className="rounded-full w-8 h-8 m-4" />
           </div>

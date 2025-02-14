@@ -1,7 +1,41 @@
+import { useContext, useState } from "react";
+import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import GlobalContext from "../GlobalContext";
 
 const Tr_Withdraw = () => {
-  const handleWithdraw = (): void => {};
+  const [amount, setAmount] = useState<string>("");
+  const { balance, setBalance, transactions, setTransactions } =
+    useContext(GlobalContext);
+
+  const handleWithdraw = (): void => {
+    const withdrawAmount = parseFloat(amount);
+
+    if (isNaN(withdrawAmount) || withdrawAmount <= 0) {
+      toast.error("Please enter a valid amount");
+      return;
+    }
+    if (withdrawAmount > balance) {
+      toast.error("Insufficient funds");
+      return;
+    }
+
+    const newBalance = balance - withdrawAmount;
+    setBalance(newBalance);
+    setTransactions([
+      ...transactions,
+      {
+        date: new Date(),
+        amount: withdrawAmount,
+        balance: newBalance,
+      },
+    ]);
+
+    toast.success(
+      `$${withdrawAmount.toFixed(2)} has been withdrawn to your account`
+    );
+    navigate("/transfer"); // navigate back to transfer page after successful deposit
+  };
 
   const navigate = useNavigate();
   return (
@@ -11,7 +45,7 @@ const Tr_Withdraw = () => {
           <div className="flex flex-row justify-between">
             <i
               onClick={() => navigate("/transfer")}
-              className="m-3 p-3 fa-solid fa-arrow-left text-xl rounded-full hover:bg-gray-100"
+              className="m-3 p-3 fa-solid fa-arrow-left text-xl rounded-full hover:bg-gray-100 hover:cursor-pointer"
             ></i>
             <img src="/gic3.png" className="rounded-full w-8 h-8 m-4" />
           </div>
@@ -24,6 +58,8 @@ const Tr_Withdraw = () => {
               <p className="text-center font-bold mx-2">$</p>
               <input
                 placeholder="0"
+                value={amount}
+                onChange={(e) => setAmount(e.target.value)}
                 className="py-10 input border border-gray-300 rounded-xl text-4xl w-48"
               />
               <p className="text-center font-bold mx-2">SGD</p>
