@@ -23,11 +23,13 @@ const Home = () => {
             <div className="card-body">
               <div className="card-title">GIC Balance</div>
               <hr></hr>
-              <div className="">
-                <h1 className=" text-6xl font-semibold">
-                  ${balance.toFixed(2)}
-                </h1>
-              </div>
+              <h1 className=" text-6xl font-semibold">${balance.toFixed(2)}</h1>
+              <button
+                onClick={() => navigate("/transfer")}
+                className="btn rounded-full w-52 mt-16 bg-blue-900 text-white"
+              >
+                Transfer Funds
+              </button>
             </div>
           </div>
           <div className="card bg-base-100 shadow-xl col-span-4 md:col-span-2 mx-12 md:mr-12 md:ml-4 mt-4 md:mt-12 border border-gray-300">
