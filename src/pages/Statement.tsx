@@ -16,33 +16,38 @@ const Statement = () => {
 
   return (
     <>
-      <div className="flex flex-row justify-center">
-        <div className="overflow-y-hidden w-full m-10 border-2 rounded-xl shadow-lg">
-          <table className="table">
-            <thead>
-              <tr>
-                <th className="text-sm">Date</th>
-                <th className="text-sm">Amount</th>
-                <th className="text-sm">Balance</th>
-              </tr>
-            </thead>
-            <tbody>
-              {transactions.map((transaction, index) => (
-                <tr key={index}>
-                  <td>{formatDate(transaction.date)}</td>
-                  <td
-                    className={
-                      transaction.amount > 0 ? "text-success" : "text-error"
-                    }
-                  >
-                    {transaction.amount > 0 ? "+" : "-"}$
-                    {Math.abs(transaction.amount).toFixed(2)}
-                  </td>
-                  <td>${transaction.balance.toFixed(2)}</td>
+      <div className="bg-stone-100 h-screen">
+        <div className="flex flex-row justify-center">
+          <div className="bg-white overflow-y-hidden w-full m-10 p-8 rounded-xl shadow-lg border-solid border-l-8 border-blue-300">
+            <div className="mb-4 flex flex-col justify-center items-center">
+              <h1 className="text-xl font-semibold ">Past Statements</h1>
+            </div>
+            <table className="table">
+              <thead>
+                <tr>
+                  <th className="text-sm">Date</th>
+                  <th className="text-sm">Amount</th>
+                  <th className="text-sm">Balance</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {transactions.map((transaction, index) => (
+                  <tr key={index}>
+                    <td>{formatDate(transaction.date)}</td>
+                    <td
+                      className={
+                        transaction.amount > 0 ? "text-success" : "text-error"
+                      }
+                    >
+                      {transaction.amount > 0 ? "+" : "-"}$
+                      {Math.abs(transaction.amount).toFixed(2)}
+                    </td>
+                    <td>${transaction.balance.toFixed(2)}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </>
