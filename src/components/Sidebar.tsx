@@ -5,7 +5,7 @@ import { Tabs } from "../types/globalContextTypes";
 
 const Sidebar = () => {
   const globalContext = useContext(GlobalContext);
-  const { isMenuOpen, activeTab, setActiveTab } = globalContext;
+  const { isMenuOpen, setIsMenuOpen, activeTab, setActiveTab } = globalContext;
   const navigate = useNavigate();
 
   function handleTabChange(tab: Tabs) {
@@ -15,6 +15,7 @@ const Sidebar = () => {
     } else {
       navigate("/");
     }
+    setIsMenuOpen(false);
   }
   return (
     <>
