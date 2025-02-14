@@ -1,6 +1,38 @@
 import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
+import { useContext, useState } from "react";
+import GlobalContext from "../GlobalContext";
 
 const Tr_Deposit = () => {
+  const [amount, setAmount] = useState<string>("");
+  const { balance, setBalance, transactions, setTransactions } =
+    useContext(GlobalContext);
+
+  const handleDeposit = (): void => {
+    const depositAmount = parseFloat(amount);
+
+    if (isNaN(depositAmount) || depositAmount <= 0) {
+      toast.error("Please enter a valid amount");
+      return;
+    }
+
+    const newBalance = balance + depositAmount;
+    setBalance(newBalance);
+    setTransactions([
+      ...transactions,
+      {
+        date: new Date(),
+        amount: depositAmount,
+        balance: newBalance,
+      },
+    ]);
+
+    toast.success(
+      `$${depositAmount.toFixed(2)} has been deposited to your account`
+    );
+    navigate("/transfer"); // navigate back to transfer page after successful deposit
+  };
+
   const navigate = useNavigate();
   return (
     <div className="bg-stone-100 h-screen">
@@ -22,11 +54,16 @@ const Tr_Deposit = () => {
               <p className="text-center font-bold mx-2">$</p>
               <input
                 placeholder="0"
+                value={amount}
+                onChange={(e) => setAmount(e.target.value)}
                 className="py-10 input border border-gray-300 rounded-xl text-4xl w-48"
               />
               <p className="text-center font-bold mx-2">SGD</p>
             </div>
-            <button className="btn rounded-full w-52 mb-16 bg-blue-900 text-white">
+            <button
+              onClick={() => handleDeposit()}
+              className="btn rounded-full w-52 mb-16 bg-blue-900 text-white"
+            >
               Deposit
             </button>
           </div>
