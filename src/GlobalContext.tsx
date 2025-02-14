@@ -2,6 +2,7 @@ import { createContext, useState } from "react";
 import {
   GlobalContextType,
   initialGlobalState,
+  Transaction,
 } from "./types/globalContextTypes";
 import { ReactNode } from "react";
 
@@ -14,6 +15,9 @@ export const GlobalProvider = ({ children }: { children: ReactNode }) => {
     "Landing" | "Home" | "Transfer" | "Statement"
   >("Landing");
 
+  const [balance, setBalance] = useState<number>(0);
+  const [transactions, setTransactions] = useState<Transaction[]>([]);
+
   const context = {
     isLoggedIn,
     setIsLoggedIn,
@@ -21,6 +25,10 @@ export const GlobalProvider = ({ children }: { children: ReactNode }) => {
     setActiveTab,
     isMenuOpen,
     setIsMenuOpen,
+    balance,
+    setBalance,
+    transactions,
+    setTransactions,
   };
 
   return (

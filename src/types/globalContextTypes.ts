@@ -5,6 +5,10 @@ export interface GlobalContextType {
   setActiveTab: (tab: "Landing" | "Home" | "Transfer" | "Statement") => void;
   isMenuOpen: boolean;
   setIsMenuOpen: (bool: boolean) => void;
+  balance: number;
+  setBalance: (balance: number) => void;
+  transactions: Transaction[];
+  setTransactions: (transactions: Transaction[]) => void;
 }
 
 export const initialGlobalState = {
@@ -14,6 +18,10 @@ export const initialGlobalState = {
   setActiveTab: () => {},
   isMenuOpen: false,
   setIsMenuOpen: () => {},
+  balance: 0,
+  setBalance: () => {},
+  transactions: [],
+  setTransactions: () => {},
 };
 
 export interface SlideInTextProps {
