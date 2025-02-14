@@ -79,7 +79,7 @@ const NavLoggedIn = () => {
           </div>
           {/* End Left Tabs */}
           {/* Right Tabs */}
-          <div className="flex sm:flex-col md:flex-row justify-center items-center ">
+          <div className="flex flex-col sm:flex-row justify-center items-center ">
             <div className="">
               <i
                 className="text-gray-300 fa-solid fa-gear fa-lg text-3xl px-2 mx-2 text-opacity-70 hover:text-opacity-100 hover:cursor-pointer hover:text-white-400 hidden sm:block hover:animate-spin-cw"
