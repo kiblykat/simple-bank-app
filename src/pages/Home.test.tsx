@@ -1,10 +1,12 @@
 import "@testing-library/jest-dom/vitest";
-
-import { describe, it, expect, vi, beforeEach } from "vitest";
-import { render, screen, fireEvent } from "@testing-library/react";
-import { HashRouter, useNavigate } from "react-router-dom";
+import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
+import { render, screen, fireEvent, cleanup } from "@testing-library/react";
+import { HashRouter } from "react-router-dom";
 import Home from "./Home";
 import GlobalContext from "../GlobalContext";
+
+// Create navigate mock
+const navigateMock = vi.fn();
 
 // Mock react-router-dom
 vi.mock("react-router-dom", async (importOriginal) => {
@@ -15,9 +17,6 @@ vi.mock("react-router-dom", async (importOriginal) => {
     HashRouter: (({ children }) => children) as typeof HashRouter,
   };
 });
-
-// Create navigate mock
-const navigateMock = vi.fn();
 
 // Mock test data
 const mockTransactions = [
@@ -48,8 +47,15 @@ const renderWithContext = (component: React.ReactNode) => {
 };
 
 describe("Home Component", () => {
+  //ensure to setup prior to tests!!
   beforeEach(() => {
     vi.clearAllMocks();
+    renderWithContext(<Home />);
+  });
+
+  //ensure to cleanup all previous tree renders!
+  afterEach(() => {
+    cleanup();
   });
 
   it("redirects to landing page when not logged in", () => {
@@ -69,9 +75,9 @@ describe("Home Component", () => {
   });
 
   it("displays recent transactions", () => {
-    expect(screen.getByText(/\+\$100\.50/)).toBeInTheDocument();
-    expect(screen.getByText(/\-\$50\.25/)).toBeInTheDocument();
-    expect(screen.getByText(/\+\$75\.00/)).toBeInTheDocument();
+    expect(screen.getByText("+$100.50")).toBeInTheDocument();
+    expect(screen.getByText("-$50.25")).toBeInTheDocument();
+    expect(screen.getByText("+$75.00")).toBeInTheDocument();
   });
 
   it('navigates to transfer page when "Transfer Funds" button is clicked', () => {
