@@ -21,16 +21,22 @@ const navigateMock = vi.fn();
 
 // Mock test data
 const mockTransactions = [
-  { date: "2024-02-15", amount: 100.5 },
-  { date: "2024-02-14", amount: -50.25 },
-  { date: "2024-02-13", amount: 75.0 },
+  { date: new Date("2024-02-15"), amount: 100.5, balance: 1050.5 },
+  { date: new Date("2024-02-14"), amount: -50.25, balance: 950.25 },
+  { date: new Date("2024-02-13"), amount: 75.0, balance: 1025.25 },
 ];
 
 const mockContextValue = {
   isLoggedIn: true,
+  setIsLoggedIn: vi.fn(),
+  activeTab: "Landing",
   setActiveTab: vi.fn(),
+  isMenuOpen: false,
+  setIsMenuOpen: vi.fn(),
   balance: 1000.0,
+  setBalance: vi.fn(),
   transactions: mockTransactions,
+  setTransactions: vi.fn(),
 };
 
 const renderWithContext = (component: React.ReactNode) => {
@@ -59,31 +65,26 @@ describe("Home Component", () => {
   });
 
   it("displays the correct balance", () => {
-    renderWithContext(<Home />);
     expect(screen.getByText("$1000.00")).toBeInTheDocument();
   });
 
   it("displays recent transactions", () => {
-    renderWithContext(<Home />);
     expect(screen.getByText(/\+\$100\.50/)).toBeInTheDocument();
     expect(screen.getByText(/\-\$50\.25/)).toBeInTheDocument();
     expect(screen.getByText(/\+\$75\.00/)).toBeInTheDocument();
   });
 
   it('navigates to transfer page when "Transfer Funds" button is clicked', () => {
-    renderWithContext(<Home />);
     const transferButton = screen.getByText("Transfer Funds");
     fireEvent.click(transferButton);
     expect(navigateMock).toHaveBeenCalledWith("/transfer");
   });
 
   it('sets the active tab to "Home"', () => {
-    renderWithContext(<Home />);
     expect(mockContextValue.setActiveTab).toHaveBeenCalledWith("Home");
   });
 
   it("displays the correct number of recent transactions", () => {
-    renderWithContext(<Home />);
     const rows = screen.getAllByRole("row");
     // +1 for header row
     expect(rows.length).toBe(mockTransactions.length + 1);
