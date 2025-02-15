@@ -44,6 +44,7 @@ const Tr_Withdraw = () => {
         <div className="flex flex-col bg-white shadow-lg m-8 rounded-lg border-l-8 border-solid border-blue-300">
           <div className="flex flex-row justify-between">
             <i
+              data-testid="back-button"
               onClick={() => navigate("/transfer")}
               className="m-3 p-3 fa-solid fa-arrow-left text-xl rounded-full hover:bg-gray-100 hover:cursor-pointer"
             ></i>
