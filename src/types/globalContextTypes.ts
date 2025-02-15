@@ -11,7 +11,7 @@ export interface GlobalContextType {
   setTransactions: (transactions: Transaction[]) => void;
 }
 
-export const initialGlobalState = {
+export const initialGlobalState: GlobalContextType = {
   isLoggedIn: false,
   setIsLoggedIn: () => {},
   activeTab: "Landing",

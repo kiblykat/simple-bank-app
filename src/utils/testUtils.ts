@@ -1,6 +1,7 @@
 import { vi } from "vitest";
+import { GlobalContextType } from "../types/globalContextTypes";
 
-export const mockContextValue = {
+export const mockContextValue: GlobalContextType = {
   isLoggedIn: true,
   setIsLoggedIn: vi.fn(),
   activeTab: "Landing",
