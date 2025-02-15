@@ -46,13 +46,13 @@ const renderWithContext = (component: React.ReactNode) => {
 };
 
 describe("Home Component", () => {
-  //ensure to setup prior to tests!!
+  //SETUP prior to each test
   beforeEach(() => {
     vi.clearAllMocks();
     renderWithContext(<Home />);
   });
 
-  //ensure to cleanup all previous tree renders!
+  //TEARDOWN previous tree render after each test
   afterEach(() => {
     cleanup();
   });

@@ -52,6 +52,7 @@ const renderWithContext = (component: React.ReactNode) => {
 };
 
 describe("Landing Component", () => {
+  //SETUP
   beforeEach(() => {
     vi.clearAllMocks();
     // IntersectionObserver isn't available in test environment
@@ -65,6 +66,7 @@ describe("Landing Component", () => {
     renderWithContext(<Landing />);
   });
 
+  //TEARDOWN
   afterEach(() => {
     cleanup();
   });
