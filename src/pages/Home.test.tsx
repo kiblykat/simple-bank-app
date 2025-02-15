@@ -21,6 +21,7 @@ const mockTransactions = [
   { date: new Date("2024-02-15"), amount: 100.5, balance: 1050.5 },
   { date: new Date("2024-02-14"), amount: -50.25, balance: 950.25 },
   { date: new Date("2024-02-13"), amount: 75.0, balance: 1025.25 },
+  { date: new Date("2024-02-13"), amount: 75.0, balance: 1100.25 },
 ];
 
 const mockContextValue = {
@@ -90,7 +91,7 @@ describe("Home Component", () => {
 
   it("displays the correct number of recent transactions", () => {
     const rows = screen.getAllByRole("row");
-    // +1 for header row
-    expect(rows.length).toBe(mockTransactions.length + 1);
+    // cutoff at 3 for recent transactions, +1 for header row
+    expect(rows.length).toBe(Math.min(mockTransactions.length, 3) + 1);
   });
 });
