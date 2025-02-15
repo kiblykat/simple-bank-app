@@ -1,9 +1,9 @@
 import "@testing-library/jest-dom/vitest";
 import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
 import { render, screen, fireEvent, cleanup } from "@testing-library/react";
-import { HashRouter } from "react-router-dom";
 import Home from "./Home";
 import GlobalContext from "../GlobalContext";
+import { mockContextValue } from "../utils/testUtils";
 
 // Create navigate mock
 const navigateMock = vi.fn();
@@ -12,7 +12,6 @@ const navigateMock = vi.fn();
 vi.mock("react-router-dom", () => {
   return {
     useNavigate: () => navigateMock,
-    HashRouter: (({ children }) => children) as typeof HashRouter,
   };
 });
 
@@ -24,23 +23,16 @@ const mockTransactions = [
   { date: new Date("2024-02-13"), amount: -25.25, balance: 1000.0 },
 ];
 
-const mockContextValue = {
-  isLoggedIn: true,
-  setIsLoggedIn: vi.fn(),
-  activeTab: "Landing",
-  setActiveTab: vi.fn(),
-  isMenuOpen: false,
-  setIsMenuOpen: vi.fn(),
-  balance: 1000.0,
-  setBalance: vi.fn(),
+//create a new mock context value with 4 transactions
+const newMockContextValue = {
+  ...mockContextValue,
   transactions: mockTransactions,
-  setTransactions: vi.fn(),
 };
 
 const renderWithContext = (component: React.ReactNode) => {
   return render(
-    <GlobalContext.Provider value={mockContextValue}>
-      <HashRouter>{component}</HashRouter>
+    <GlobalContext.Provider value={newMockContextValue}>
+      {component}
     </GlobalContext.Provider>
   );
 };
@@ -61,9 +53,7 @@ describe("Home Component", () => {
     const notLoggedInContext = { ...mockContextValue, isLoggedIn: false };
     render(
       <GlobalContext.Provider value={notLoggedInContext}>
-        <HashRouter>
-          <Home />
-        </HashRouter>
+        <Home />
       </GlobalContext.Provider>
     );
     expect(navigateMock).toHaveBeenCalledWith("/");
