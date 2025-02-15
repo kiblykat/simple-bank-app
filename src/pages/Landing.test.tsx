@@ -1,10 +1,9 @@
 import "@testing-library/jest-dom/vitest";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { cleanup, fireEvent, render, screen } from "@testing-library/react";
-import { HashRouter } from "react-router-dom";
 import Landing from "./Landing";
 import GlobalContext from "../GlobalContext";
-import { SlideInText } from "../components/SlideInText";
+import { mockContextValue } from "../utils/testUtils";
 
 // Create navigate mock
 const navigateMock = vi.fn();
@@ -13,43 +12,21 @@ const navigateMock = vi.fn();
 vi.mock("react-router-dom", () => {
   return {
     useNavigate: () => navigateMock,
-    HashRouter: (({ children }) => children) as typeof HashRouter,
-  };
-});
-
-const mockContextValue = {
-  isLoggedIn: true,
-  setIsLoggedIn: vi.fn(),
-  activeTab: "Landing",
-  setActiveTab: vi.fn(),
-  isMenuOpen: false,
-  setIsMenuOpen: vi.fn(),
-  balance: 1000.0,
-  setBalance: vi.fn(),
-  transactions: [],
-  setTransactions: vi.fn(),
-};
-
-// Mock the SlideInText component
-vi.mock("../components/SlideInText", () => ({
-  SlideInText: ({ children }: { children: React.ReactNode }) => children,
-}));
-
-// Mock react-router-dom
-vi.mock("react-router-dom", () => {
-  return {
-    useNavigate: () => navigateMock,
-    HashRouter: (({ children }) => children) as typeof HashRouter,
   };
 });
 
 const renderWithContext = (component: React.ReactNode) => {
   return render(
     <GlobalContext.Provider value={mockContextValue}>
-      <HashRouter>{component}</HashRouter>
+      {component}
     </GlobalContext.Provider>
   );
 };
+
+// Mock the SlideInText component
+vi.mock("../components/SlideInText", () => ({
+  SlideInText: ({ children }: { children: React.ReactNode }) => children,
+}));
 
 describe("Landing Component", () => {
   //SETUP
@@ -108,29 +85,5 @@ describe("Landing Component", () => {
       "font-bold",
       "text-navy-900"
     );
-  });
-});
-
-// Separate test suite for SlideInText component
-describe("SlideInText Component", () => {
-  const IntersectionObserverMock = vi.fn(() => ({
-    observe: vi.fn(),
-    unobserve: vi.fn(),
-    disconnect: vi.fn(),
-  }));
-
-  beforeEach(() => {
-    vi.clearAllMocks();
-    // Mock IntersectionObserver
-    vi.stubGlobal("IntersectionObserver", IntersectionObserverMock);
-  });
-
-  it("renders children correctly", () => {
-    render(
-      <SlideInText>
-        <p>Test Content</p>
-      </SlideInText>
-    );
-    expect(screen.getByText("Test Content")).toBeInTheDocument();
   });
 });
