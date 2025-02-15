@@ -67,6 +67,26 @@ describe("Tr_Withdraw Component", () => {
     expect(navigateMock).toHaveBeenCalledWith("/transfer");
   });
 
+  it("handles invalid withdraw amount (insufficient funds)", () => {
+    renderWithContext(<Tr_Withdraw />);
+
+    const withdrawAmount = mockContextValue.balance + 0.1;
+    //withdrawn amount > balance
+    const input = screen.getByPlaceholderText("0");
+    fireEvent.change(input, { target: { value: String(withdrawAmount) } });
+
+    //mimic pressing Withdraw
+    const withdrawButton = screen.getByText("Withdraw");
+    fireEvent.click(withdrawButton);
+
+    expect(mockContextValue.setBalance).not.toHaveBeenCalledWith(
+      withdrawAmount
+    );
+    expect(mockContextValue.setTransactions).not.toHaveBeenCalled();
+    expect(toast.error).toHaveBeenCalledWith("Insufficient funds");
+    expect(navigateMock).not.toHaveBeenCalledWith("/transfer");
+  });
+
   it("handles invalid withdraw amount", () => {
     renderWithContext(<Tr_Withdraw />);
 
