@@ -9,10 +9,8 @@ import GlobalContext from "../GlobalContext";
 const navigateMock = vi.fn();
 
 // Mock react-router-dom
-vi.mock("react-router-dom", async (importOriginal) => {
-  const actual = await importOriginal();
+vi.mock("react-router-dom", () => {
   return {
-    ...actual,
     useNavigate: () => navigateMock,
     HashRouter: (({ children }) => children) as typeof HashRouter,
   };
