@@ -8,7 +8,15 @@ import { GlobalProvider } from "./GlobalContext.tsx";
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <GlobalProvider>
-      <Toaster position="bottom-right" reverseOrder={false} />
+      <Toaster
+        position="top-center"
+        reverseOrder={false}
+        toastOptions={{
+          // Define default options
+          className: "",
+          duration: 2000,
+        }}
+      />
       <App />
     </GlobalProvider>
   </StrictMode>
