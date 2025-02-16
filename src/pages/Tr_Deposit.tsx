@@ -62,6 +62,7 @@ const Tr_Deposit = () => {
               <p className="text-center font-bold mx-2">SGD</p>
             </div>
             <button
+              data-testid="deposit-button"
               onClick={() => handleDeposit()}
               className="btn rounded-full w-52 mb-16 bg-blue-900 text-white"
             >

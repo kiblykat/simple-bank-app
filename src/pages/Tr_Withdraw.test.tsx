@@ -62,7 +62,7 @@ describe("Tr_Withdraw Component", () => {
     expect(mockContextValue.setBalance).toHaveBeenCalledWith(899.5);
     expect(mockContextValue.setTransactions).toHaveBeenCalled();
     expect(toast.success).toHaveBeenCalledWith(
-      "$100.50 has been withdrawn to your account"
+      "$100.50 has been withdrawn from your account"
     );
     expect(navigateMock).toHaveBeenCalledWith("/transfer");
   });

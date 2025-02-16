@@ -32,7 +32,7 @@ const Tr_Withdraw = () => {
     ]);
 
     toast.success(
-      `$${withdrawAmount.toFixed(2)} has been withdrawn to your account`
+      `$${withdrawAmount.toFixed(2)} has been withdrawn from your account`
     );
     navigate("/transfer"); // navigate back to transfer page after successful deposit
   };
@@ -66,6 +66,7 @@ const Tr_Withdraw = () => {
               <p className="text-center font-bold mx-2">SGD</p>
             </div>
             <button
+              data-testid="withdraw-button"
               onClick={() => handleWithdraw()}
               className="btn rounded-full w-52 mb-16 bg-blue-900 text-white"
             >
