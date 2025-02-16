@@ -22,7 +22,7 @@ describe("NavLoggedOut", () => {
     isMenuOpen: false,
   };
 
-  const renderComponent = () => {
+  const renderWithContext = () => {
     return render(
       <GlobalContext.Provider value={LoggedOutContextValue}>
         <NavLoggedOut />
@@ -39,12 +39,12 @@ describe("NavLoggedOut", () => {
   });
 
   it("renders without crashing", () => {
-    renderComponent();
+    renderWithContext();
     expect(screen.getByText("LOG IN")).toBeInTheDocument();
   });
 
   it("handles login button click correctly", () => {
-    renderComponent();
+    renderWithContext();
     const loginButton = screen.getByText("LOG IN");
     fireEvent.click(loginButton);
 
@@ -54,28 +54,28 @@ describe("NavLoggedOut", () => {
   });
 
   it("navigates to home page when logo is clicked", () => {
-    renderComponent();
+    renderWithContext();
     const logo = screen.getByRole("img");
     fireEvent.click(logo);
     expect(mockNavigate).toHaveBeenCalledWith("/");
   });
 
   // it("renders gear icon with correct classes", () => {
-  //   renderComponent();
+  //   renderWithContext();
   //   const gearIcon = screen.getByClassName("fa-gear");
   //   expect(gearIcon).toBeInTheDocument();
   //   expect(gearIcon.className).toContain("hover:animate-spin-cw");
   // });
 
   // it("adds spin animation class when mouse leaves gear icon", () => {
-  //   renderComponent();
+  //   renderWithContext();
   //   const gearIcon = screen.getByClassName("fa-gear");
   //   fireEvent.mouseLeave(gearIcon);
   //   expect(gearIcon.className).toContain("animate-spin-ccw");
   // });
 
   it("navigation buttons are hidden when logged out", () => {
-    renderComponent();
+    renderWithContext();
     const buttons = screen.getAllByRole("button");
     buttons.forEach((button) => {
       expect(button.className).toContain("hidden");
@@ -83,7 +83,7 @@ describe("NavLoggedOut", () => {
   });
 
   it("login button has correct styling", () => {
-    renderComponent();
+    renderWithContext();
     const loginButton = screen.getByText("LOG IN");
     expect(loginButton.className).toContain("border-2");
     expect(loginButton.className).toContain("rounded-full");
@@ -91,13 +91,13 @@ describe("NavLoggedOut", () => {
   });
 
   it("maintains responsive layout classes", () => {
-    renderComponent();
+    renderWithContext();
     const container = screen.getByText("LOG IN").closest(".flex");
     expect(container).toHaveClass("flex-col", "sm:flex-row");
   });
 
   it("logo has correct styling and attributes", () => {
-    renderComponent();
+    renderWithContext();
     const logo = screen.getByRole("img");
     expect(logo).toHaveAttribute("src", "gic3.png");
     expect(logo.className).toContain("rounded-full");

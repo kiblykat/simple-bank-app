@@ -16,7 +16,7 @@ vi.mock("react-router-dom", async () => {
 });
 
 describe("NavLoggedIn", () => {
-  const renderComponent = () => {
+  const renderWithContext = () => {
     return render(
       <GlobalContext.Provider value={mockContextValue}>
         <NavLoggedIn />
@@ -33,12 +33,12 @@ describe("NavLoggedIn", () => {
   });
 
   it("renders without crashing", () => {
-    renderComponent();
+    renderWithContext();
     expect(screen.getByText("Home")).toBeInTheDocument();
   });
 
   it("displays all navigation buttons when in desktop view", () => {
-    renderComponent();
+    renderWithContext();
     expect(screen.getByText("Home")).toBeInTheDocument();
     expect(screen.getByText("Transfer")).toBeInTheDocument();
     expect(screen.getByText("Statement")).toBeInTheDocument();
@@ -46,14 +46,14 @@ describe("NavLoggedIn", () => {
   });
 
   it("toggles menu when burger button is clicked", () => {
-    renderComponent();
+    renderWithContext();
     const burgerButton = screen.getByRole("button", { name: "" }); // The burger button has no text
     fireEvent.click(burgerButton);
     expect(mockContextValue.setIsMenuOpen).toHaveBeenCalledWith(true);
   });
 
   it("navigates to correct route when tab is changed", () => {
-    renderComponent();
+    renderWithContext();
 
     // Test Transfer navigation
     fireEvent.click(screen.getByText("Transfer"));
@@ -67,7 +67,7 @@ describe("NavLoggedIn", () => {
   });
 
   it("navigates to home page when logo is clicked", () => {
-    renderComponent();
+    renderWithContext();
     const logo = screen.getByRole("img");
     fireEvent.click(logo);
     expect(mockContextValue.setActiveTab).toHaveBeenCalledWith("Landing");
@@ -75,13 +75,13 @@ describe("NavLoggedIn", () => {
   });
 
   it("logs out user when logout button is clicked", () => {
-    renderComponent();
+    renderWithContext();
     fireEvent.click(screen.getByText("LOG OUT"));
     expect(mockContextValue.setIsLoggedIn).toHaveBeenCalledWith(false);
   });
 
   // it("applies correct styling to active tab", () => {
-  //   renderComponent();
+  //   renderWithContext();
   //   const homeButton = screen.getByText("Home");
   //   expect(homeButton.className).toContain("bg-white/20");
 
