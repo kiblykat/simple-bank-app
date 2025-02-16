@@ -18,10 +18,20 @@ const Statement = () => {
     <>
       <div className="bg-stone-100 h-full">
         <div className="flex flex-row justify-center">
-          <div className="bg-white overflow-y-auto w-full h-screen m-10 p-8 rounded-xl shadow-lg border-solid border-l-8 border-blue-300">
-            <div className="mb-4 flex flex-col justify-center items-center">
-              <h1 className="text-xl font-semibold ">Past Statements</h1>
+          <div className="bg-white overflow-y-auto w-full h-screen m-8 rounded-xl shadow-lg border-solid border-l-8 border-blue-300">
+            <div className="flex flex-row justify-between">
+              <i
+                data-testid="back-button"
+                onClick={() => navigate("/home")}
+                className="m-3 p-3 fa-solid fa-arrow-left text-xl rounded-full hover:bg-gray-100 hover:cursor-pointer"
+              ></i>
+              <h1 className="flex flex-row justify-center items-center text-xl font-semibold text-center ">
+                Past Statements
+              </h1>
+
+              <img src="/gic3.png" className="rounded-full w-8 h-8 m-4" />
             </div>
+            <div className="mb-4 flex flex-col justify-center items-center"></div>
             <table className="table">
               <thead>
                 <tr>
