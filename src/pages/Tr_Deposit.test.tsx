@@ -65,7 +65,7 @@ describe("Tr_Deposit Component", () => {
     expect(navigateMock).toHaveBeenCalledWith("/transfer");
   });
 
-  it("handles invalid deposit amount", () => {
+  it("handles negative deposit amount", () => {
     renderWithContext(<Tr_Deposit />);
 
     const input = screen.getByPlaceholderText("0");
@@ -84,6 +84,20 @@ describe("Tr_Deposit Component", () => {
 
     const input = screen.getByPlaceholderText("0");
     fireEvent.change(input, { target: { value: "abc" } });
+
+    const depositButton = screen.getByText("Deposit");
+    fireEvent.click(depositButton);
+
+    expect(toast.error).toHaveBeenCalledWith("Please enter a valid amount");
+    expect(mockContextValue.setBalance).not.toHaveBeenCalled();
+    expect(mockContextValue.setTransactions).not.toHaveBeenCalled();
+  });
+
+  it("handles number coupled with NaN input", () => {
+    renderWithContext(<Tr_Deposit />);
+
+    const input = screen.getByPlaceholderText("0");
+    fireEvent.change(input, { target: { value: "10.]0" } });
 
     const depositButton = screen.getByText("Deposit");
     fireEvent.click(depositButton);

@@ -87,7 +87,7 @@ describe("Tr_Withdraw Component", () => {
     expect(navigateMock).not.toHaveBeenCalledWith("/transfer");
   });
 
-  it("handles invalid withdraw amount", () => {
+  it("handles invalid withdraw amount (negative value)", () => {
     renderWithContext(<Tr_Withdraw />);
 
     const input = screen.getByPlaceholderText("0");
@@ -106,6 +106,20 @@ describe("Tr_Withdraw Component", () => {
 
     const input = screen.getByPlaceholderText("0");
     fireEvent.change(input, { target: { value: "abc" } });
+
+    const withdrawButton = screen.getByText("Withdraw");
+    fireEvent.click(withdrawButton);
+
+    expect(toast.error).toHaveBeenCalledWith("Please enter a valid amount");
+    expect(mockContextValue.setBalance).not.toHaveBeenCalled();
+    expect(mockContextValue.setTransactions).not.toHaveBeenCalled();
+  });
+
+  it("handles non-numeric input coupled with NaN value", () => {
+    renderWithContext(<Tr_Withdraw />);
+
+    const input = screen.getByPlaceholderText("0");
+    fireEvent.change(input, { target: { value: "10.]0" } });
 
     const withdrawButton = screen.getByText("Withdraw");
     fireEvent.click(withdrawButton);
