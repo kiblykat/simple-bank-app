@@ -1,50 +1,40 @@
-# React + TypeScript + Vite
+# 💳 Simple Banking System
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Preamble
 
-Currently, two official plugins are available:
+This project implements a simple banking application utilizing a single-page web application GUI. The application should be capable of 3 main features:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- depositing an amount
+- withdrawing an amount
+- printing account statement
 
-## Expanding the ESLint configuration
+I have structured this app so that a Navbar is available for easy navigation. <b>Depositing</b> and <b>Withdrawing</b> are done through the <u>Transfer</u> tab. <b>Printing account statements</b> is done through the <u>Statement</u> tab. I have ensured that the design is responsive for mobile screens as well, with an adaptive UI.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+The github repository can be found here: https://github.com/kiblykat/zenika-client-final.
 
-- Configure the top-level `parserOptions` property like this:
+## Setup Instructions
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+### Running the program
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+1. Ensure nodejs is installed on your system: https://nodejs.org/en/download
+2. Clone the repository from https://github.com/kiblykat/zenika-client-final.
+3. Open command line, run "npm i" to download the relevant dependencies and generate the /node_modules folder
+4. run "npm run dev" to start the development mode. By default, the vite server will run on http://localhost:5173/
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+### Testing
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+Ensure relevant dependencies are already downloaded from above (type "npm i" in terminal)
+
+1. To run the unit tests, type "npm run test"
+2. To run integration tests, first ensure dev environment is running. type "npm run dev" in terminal
+3. Next, type "npx cypress open" to start the cypress GUI
+4. A GUI will pop-up, click "E2E testing" -> "Chrome" -> "Start E2E Testing in Chrome"
+5. A chrome browser will popup with the cypress environment
+6. Under the current "Specs" tab, you will see printStatement.cy.ts and TransferMoney.cy.ts - which corresponds to the two integration tests created mimicing user interaction.
+7. Click on either one of these to start the integration test.
+
+## Tech Stack
+
+- Frontend: Node.js, React, TypeScript
+- Styling: Tailwind + DaisyUI (+fontawesome for icons)
+- Testing: Vitest, Cypress
