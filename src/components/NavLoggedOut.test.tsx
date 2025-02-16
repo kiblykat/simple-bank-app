@@ -60,20 +60,6 @@ describe("NavLoggedOut", () => {
     expect(mockNavigate).toHaveBeenCalledWith("/");
   });
 
-  // it("renders gear icon with correct classes", () => {
-  //   renderWithContext();
-  //   const gearIcon = screen.getByClassName("fa-gear");
-  //   expect(gearIcon).toBeInTheDocument();
-  //   expect(gearIcon.className).toContain("hover:animate-spin-cw");
-  // });
-
-  // it("adds spin animation class when mouse leaves gear icon", () => {
-  //   renderWithContext();
-  //   const gearIcon = screen.getByClassName("fa-gear");
-  //   fireEvent.mouseLeave(gearIcon);
-  //   expect(gearIcon.className).toContain("animate-spin-ccw");
-  // });
-
   it("navigation buttons are hidden when logged out", () => {
     renderWithContext();
     const buttons = screen.getAllByRole("button");

@@ -79,13 +79,4 @@ describe("NavLoggedIn", () => {
     fireEvent.click(screen.getByText("LOG OUT"));
     expect(mockContextValue.setIsLoggedIn).toHaveBeenCalledWith(false);
   });
-
-  // it("applies correct styling to active tab", () => {
-  //   renderWithContext();
-  //   const homeButton = screen.getByText("Home");
-  //   expect(homeButton.className).toContain("bg-white/20");
-
-  //   const transferButton = screen.getByText("Transfer");
-  //   expect(transferButton.className).not.toContain("bg-white/20");
-  // });
 });
