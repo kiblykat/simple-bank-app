@@ -129,6 +129,20 @@ describe("Tr_Withdraw Component", () => {
     expect(mockContextValue.setTransactions).not.toHaveBeenCalled();
   });
 
+  it("handles 3dp as non-valid", () => {
+    renderWithContext(<Tr_Withdraw />);
+
+    const input = screen.getByPlaceholderText("0");
+    fireEvent.change(input, { target: { value: "10.000" } });
+
+    const withdrawButton = screen.getByText("Withdraw");
+    fireEvent.click(withdrawButton);
+
+    expect(toast.error).toHaveBeenCalledWith("Please enter a valid amount");
+    expect(mockContextValue.setBalance).not.toHaveBeenCalled();
+    expect(mockContextValue.setTransactions).not.toHaveBeenCalled();
+  });
+
   it("navigates back when back arrow is clicked", () => {
     renderWithContext(<Tr_Withdraw />);
 

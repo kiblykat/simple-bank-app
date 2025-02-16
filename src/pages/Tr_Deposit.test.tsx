@@ -107,6 +107,20 @@ describe("Tr_Deposit Component", () => {
     expect(mockContextValue.setTransactions).not.toHaveBeenCalled();
   });
 
+  it("handles 3dp as non-valid", () => {
+    renderWithContext(<Tr_Deposit />);
+
+    const input = screen.getByPlaceholderText("0");
+    fireEvent.change(input, { target: { value: "10.000" } });
+
+    const depositButton = screen.getByText("Deposit");
+    fireEvent.click(depositButton);
+
+    expect(toast.error).toHaveBeenCalledWith("Please enter a valid amount");
+    expect(mockContextValue.setBalance).not.toHaveBeenCalled();
+    expect(mockContextValue.setTransactions).not.toHaveBeenCalled();
+  });
+
   it("navigates back when back arrow is clicked", () => {
     renderWithContext(<Tr_Deposit />);
 
