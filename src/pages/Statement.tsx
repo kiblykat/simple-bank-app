@@ -16,9 +16,9 @@ const Statement = () => {
 
   return (
     <>
-      <div className="bg-stone-100 h-screen">
+      <div className="bg-stone-100 h-full">
         <div className="flex flex-row justify-center">
-          <div className="bg-white overflow-y-hidden w-full m-10 p-8 rounded-xl shadow-lg border-solid border-l-8 border-blue-300">
+          <div className="bg-white overflow-y-auto w-full h-screen m-10 p-8 rounded-xl shadow-lg border-solid border-l-8 border-blue-300">
             <div className="mb-4 flex flex-col justify-center items-center">
               <h1 className="text-xl font-semibold ">Past Statements</h1>
             </div>

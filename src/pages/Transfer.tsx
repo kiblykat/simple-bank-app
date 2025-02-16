@@ -16,7 +16,7 @@ const Transfer = () => {
 
   return (
     <>
-      <div className="bg-stone-100 h-screen">
+      <div className="bg-stone-100 h-full">
         <div className="flex flex-row justify-center w-screen h-screen">
           <div className="bg-white p-8 px-20 rounded-lg shadow-md">
             <div className="flex flex-col mb-4 justify-center items-center">
