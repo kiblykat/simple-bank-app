@@ -9,8 +9,15 @@ const Tr_Deposit = () => {
     useContext(GlobalContext);
 
   const handleDeposit = (): void => {
-    const depositAmount = parseFloat(amount);
+    //check if the input matches a valid number format
+    const isValidFormat = /^\d*\.?\d{0,2}$/.test(amount);
 
+    if (!isValidFormat) {
+      toast.error("Please enter a valid amount");
+      return;
+    }
+
+    const depositAmount = parseFloat(amount);
     if (isNaN(depositAmount) || depositAmount <= 0) {
       toast.error("Please enter a valid amount");
       return;

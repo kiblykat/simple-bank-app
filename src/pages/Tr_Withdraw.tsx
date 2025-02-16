@@ -9,6 +9,14 @@ const Tr_Withdraw = () => {
     useContext(GlobalContext);
 
   const handleWithdraw = (): void => {
+    //check if the input matches a valid number format
+    const isValidFormat = /^\d*\.?\d{0,2}$/.test(amount);
+
+    if (!isValidFormat) {
+      toast.error("Please enter a valid amount");
+      return;
+    }
+
     const withdrawAmount = parseFloat(amount);
 
     if (isNaN(withdrawAmount) || withdrawAmount <= 0) {
