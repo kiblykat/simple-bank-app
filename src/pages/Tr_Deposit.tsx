@@ -53,7 +53,7 @@ const Tr_Deposit = () => {
             ></i>
             <img src="/gic3.png" className="rounded-full w-8 h-8 m-4" />
           </div>
-          <div className="flex flex-col justify-center items-center mx-20">
+          <div className="flex flex-col justify-center items-center md:mx-20">
             <div className="flex flex-row items-center justify-center m-5 mb-2">
               <p className="text-center text-2xl font-bold">Deposit Amount</p>
               <i className="text-3xl text-blue-800 fa-solid fa-circle-arrow-right p-2"></i>
