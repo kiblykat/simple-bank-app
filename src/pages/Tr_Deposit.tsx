@@ -42,7 +42,7 @@ const Tr_Deposit = () => {
 
   const navigate = useNavigate();
   return (
-    <div className="bg-stone-100 h-full">
+    <div className="bg-stone-100 h-screen">
       <div className="flex flex-row justify-center">
         <div className="flex flex-col bg-white shadow-lg m-8 rounded-lg border-l-8 border-solid border-blue-300">
           <div className="flex flex-row justify-between">
